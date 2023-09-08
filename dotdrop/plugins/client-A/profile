@@ -1,0 +1,2 @@
+echo "client-A ENV"
+echo "client-A SSH"

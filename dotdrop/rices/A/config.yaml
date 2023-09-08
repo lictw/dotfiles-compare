@@ -1,0 +1,19 @@
+config:
+  dotpath: .
+  import_configs:
+  - ../../config-base.yaml
+dotfiles:
+  rice-A:
+    src: rice-A
+    dst: '{{@@ path @@}}'
+    ignore_missing_in_dotdrop: true
+profiles:
+  rice-A:
+    include:
+    - bspwm
+    variables:
+      kitty: |-
+        include colors
+    dotfiles:
+    # - kitty # [ERR] installing "kitty" failed: source dotfile does not exist
+    - rice-A

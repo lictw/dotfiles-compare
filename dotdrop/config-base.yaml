@@ -1,0 +1,33 @@
+config:
+  dotpath: .
+variables:
+  path: /tmp/dotdrop
+dynvariables:
+  plugins: cd {{@@ _dotdrop_dotpath @@}}; find . -type f | grep plugin
+dotfiles:
+  profile:
+    src: dotfiles/profile.sh
+    dst: '{{@@ path @@}}/profile.sh'
+    chmod: '755'
+  bspwm:
+    src: dotfiles/bspwm/root
+    dst: '{{@@ path @@}}'
+    ignore_missing_in_dotdrop: true
+  bspwm/sxhkd:
+    src: dotfiles/bspwm/sxhkd
+    dst: '{{@@ path @@}}/config/sxhkd'
+  kitty:
+    src: dotfiles/kitty
+    dst: '{{@@ path @@}}/config/kitty'
+profiles:
+  base-linux:
+    dotfiles:
+    - profile
+  bspwm:
+    include:
+    - base-linux
+    variables:
+      bspwm: true
+    dotfiles:
+    - bspwm
+    - bspwm/sxhkd

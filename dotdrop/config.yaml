@@ -1,0 +1,9 @@
+config:
+  dotpath: .
+  import_configs:
+  - rices/A/config.yaml
+dotfiles: {}
+profiles:
+  HOST:
+    include:
+    - rice-A
